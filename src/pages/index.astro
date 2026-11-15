@@ -1,0 +1,148 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import bancada from '../assets/bancada-previa.webp';
+import retratoMadeira from '../assets/retrato-madeira.png';
+
+const navigation = [
+  { label: 'Serviços', href: '#servicos' },
+  { label: 'Benefícios', href: '#beneficios' },
+  { label: 'Sobre', href: '#sobre' },
+];
+
+const services = [
+  {
+    title: 'Landing pages',
+    description: 'Divulgue uma oferta, campanha ou serviço em uma página que facilita o pedido de orçamento.',
+  },
+  {
+    title: 'Sites institucionais',
+    description: 'Apresente seu negócio, reúna seus serviços e ajude o cliente a encontrar as informações de que precisa.',
+  },
+  {
+    title: 'Pequenos sistemas',
+    description: 'Organize uma rotina, como acompanhar pedidos. Em uma conversa, entendo como ela funciona e defino o escopo com você.',
+  },
+];
+
+const benefits = [
+  {
+    title: 'Presença profissional',
+    description: 'Apresente seus serviços em um endereço que você pode divulgar em cartões, perfis e mensagens.',
+  },
+  {
+    title: 'Contato mais fácil',
+    description: 'Ajude o visitante a entender a oferta e encontrar o caminho para conversar com você.',
+  },
+  {
+    title: 'Boa experiência no celular',
+    description: 'Deixe informações, links e botões fáceis de ler e usar em telas pequenas.',
+  },
+  {
+    title: 'Menos trabalho manual',
+    description: 'Reúna informações e acompanhe tarefas que hoje ficam espalhadas entre planilhas e mensagens.',
+  },
+];
+
+const contactEmail = 'contato.hericleskoelher@outlook.com';
+---
+
+<BaseLayout>
+  <header id="topo" class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="#topo"><span class="brand-mark" aria-hidden="true">&lt;/&gt;</span> Hericles Koelher</a>
+      <nav class="main-nav" aria-label="Navegação principal">
+        {navigation.map(({ label, href }) => <a href={href}>{label}</a>)}
+      </nav>
+      <a class="button header-contact" href="#contato">Contato</a>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section id="inicio" class="hero" aria-labelledby="titulo">
+      <div class="shell hero-inner">
+        <div class="hero-copy">
+          <h1 id="titulo">Sites e sistemas sob medida<br class="hero-break" /> para o <span>seu negócio</span></h1>
+          <p>Dê mais visibilidade ao seu negócio com um site ou uma landing page. Facilite o contato com seus clientes e organize suas rotinas com um sistema sob medida.</p>
+          <div class="flex flex-wrap gap-3">
+            <a class="button button-primary" href="#contato">Conversar sobre meu projeto <span aria-hidden="true">↗</span></a>
+            <a class="button button-outline" href="#servicos">Conhecer serviços</a>
+          </div>
+        </div>
+        <div class="hero-art">
+          <Image src={bancada} alt="" loading="eager" fetchpriority="high" />
+        </div>
+      </div>
+    </section>
+
+    <section id="servicos" class="services" aria-labelledby="titulo-servicos">
+      <div class="shell services-grid">
+        <div>
+          <p class="eyebrow">Serviços</p>
+          <h2 id="titulo-servicos">Soluções digitais para o seu negócio</h2>
+        </div>
+        {services.map(({ title, description }) => (
+          <article class="service-card">
+            <h3>{title}</h3>
+            <p>{description}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section id="beneficios" class="benefits" aria-labelledby="titulo-beneficios">
+      <div class="shell benefits-layout">
+        <div>
+          <p class="eyebrow">Benefícios</p>
+          <h2 id="titulo-beneficios">Por que investir em uma solução digital?</h2>
+        </div>
+        <ul class="benefits-grid">
+          {benefits.map(({ title, description }) => (
+            <li class="benefit">
+              <h3>{title}</h3>
+              <p>{description}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <section id="sobre" class="about" aria-labelledby="titulo-sobre">
+      <div class="shell about-layout">
+        <div class="about-copy">
+          <p class="eyebrow">Sobre mim</p>
+          <h2 id="titulo-sobre">Olá, me chamo Hericles.</h2>
+          <p class="about-bio">Sou formado em Ciência da Computação pela Universidade Federal do Espírito Santo (UFES) e tenho alguns anos de experiência no desenvolvimento de projetos de software para o setor privado.</p>
+          <ul class="about-links flex flex-wrap gap-x-5 gap-y-2" aria-label="Perfis profissionais">
+            <li><a href="https://br.linkedin.com/in/hericleskoelher" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a></li>
+            <li><a href="https://github.com/hericles-koelher" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a></li>
+          </ul>
+        </div>
+        <div class="about-portrait">
+          <Image src={retratoMadeira} alt="Retrato de Hericles Koelher" width={576} format="webp" />
+        </div>
+      </div>
+    </section>
+
+    <section id="contato" class="contact" aria-labelledby="titulo-contato">
+      <div class="shell">
+        <div class="contact-panel">
+          <div>
+            <h2 id="titulo-contato">Vamos tirar sua ideia do papel?</h2>
+            <p>Envie um e-mail com seu nome, o nome do seu negócio e o que você quer divulgar, melhorar ou organizar. A partir daí, podemos marcar uma conversa para entender melhor o que você precisa e definir os próximos passos.</p>
+          </div>
+          <a class="button contact-address" href={`mailto:${contactEmail}`}>
+            Enviar e-mail
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <a class="brand" href="#topo"><span class="brand-mark" aria-hidden="true">&lt;/&gt;</span> Hericles Koelher</a>
+      <a href="#topo">Voltar ao início ↑</a>
+    </div>
+  </footer>
+</BaseLayout>

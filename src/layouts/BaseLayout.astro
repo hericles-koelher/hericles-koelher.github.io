@@ -1,0 +1,27 @@
+---
+import '@fontsource-variable/dm-sans';
+import '../styles/global.css';
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const title = 'Hericles Koelher — Sites e sistemas sob medida';
+const description = 'Landing pages, sites institucionais e pequenos sistemas para pequenos negócios e profissionais autônomos.';
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content="#11131d" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+    <slot />
+    <script>
+      import '../scripts/section-scroll';
+    </script>
+  </body>
+</html>
