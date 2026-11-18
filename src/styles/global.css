@@ -106,7 +106,7 @@ h3 { font-size: clamp(1.15rem, 1.55vw, 1.35rem); line-height: 1.2; }
   .hero-art { position: relative; inset: auto; margin-inline: -1rem; aspect-ratio: 2.2; mask-image: none; }
   .hero-art::after { background: linear-gradient(#13141f, transparent 43%); }
   .services-grid, .benefits-layout, .about-layout, .contact-panel { grid-template-columns: minmax(0, 1fr); }
-  .services-grid { max-width: calc((100% - 1rem) / 1.1); }
+  .services-grid { max-width: calc((100% - 1rem) / 1.05); }
   .service-card { padding: 1.25rem; }
   .about-portrait { width: min(100%, 14rem); justify-self: start; }
   .contact-actions { width: min(100%, 18rem); justify-self: start; }
@@ -136,7 +136,7 @@ h3 { font-size: clamp(1.15rem, 1.55vw, 1.35rem); line-height: 1.2; }
 
     .services .service-card:hover {
       z-index: 1;
-      transform: scale(1.1);
+      transform: scale(1.05);
     }
 
     .main-nav a:hover, .about-links a:hover, .site-footer a:not(.brand):hover, .copy-email:hover {
