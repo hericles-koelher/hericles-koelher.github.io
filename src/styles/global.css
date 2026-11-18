@@ -84,6 +84,9 @@ h3 { font-size: clamp(1.15rem, 1.55vw, 1.35rem); line-height: 1.2; }
 .contact-panel p { max-width: 46rem; margin-top: .7rem; color: #faf7ff; }
 .contact-panel .contact-address { width: 100%; padding: .8rem 1rem; margin: 0; color: #2e1c56; background: #f7f0ff; border-radius: .6rem; font-weight: 700; overflow-wrap: anywhere; user-select: text; }
 .contact-address { min-width: 0; max-width: 100%; }
+.contact-actions { display: grid; align-content: center; justify-items: center; gap: .25rem; }
+.copy-email { min-height: 2.75rem; padding: .3rem .25rem; border: 0; background: transparent; color: #f7f0ff; cursor: pointer; font: inherit; font-weight: 700; text-decoration: underline; text-underline-offset: .2em; }
+.copy-message { min-height: 1.25rem; color: #f7f0ff; font-size: .8125rem; text-align: center; }
 .site-footer { border-top: 1px solid #27293a; }
 
 @media (max-width: 63rem) {
@@ -106,7 +109,7 @@ h3 { font-size: clamp(1.15rem, 1.55vw, 1.35rem); line-height: 1.2; }
   .services-grid { max-width: calc((100% - 1rem) / 1.1); }
   .service-card { padding: 1.25rem; }
   .about-portrait { width: min(100%, 14rem); justify-self: start; }
-  .contact-panel > .contact-address { width: min(100%, 18rem); }
+  .contact-actions { width: min(100%, 18rem); justify-self: start; }
 }
 
 @media (max-width: 29rem) {
@@ -123,17 +126,22 @@ h3 { font-size: clamp(1.15rem, 1.55vw, 1.35rem); line-height: 1.2; }
   }
 
   @media (hover: hover) and (pointer: fine) {
-    .hero .button, .service-card {
+    .hero .button, .contact-address, .service-card {
       transition: transform 160ms ease;
     }
 
-    .hero .button:hover {
+    .hero .button:hover, .contact-address:hover {
       transform: translateY(-2px);
     }
 
     .services .service-card:hover {
       z-index: 1;
       transform: scale(1.1);
+    }
+
+    .main-nav a:hover, .about-links a:hover, .site-footer a:not(.brand):hover, .copy-email:hover {
+      text-decoration-thickness: 2px;
+      text-underline-offset: .25em;
     }
   }
 }

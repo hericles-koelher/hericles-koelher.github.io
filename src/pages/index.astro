@@ -131,9 +131,11 @@ const contactEmail = 'contato.hericleskoelher@outlook.com';
             <h2 id="titulo-contato">Vamos tirar sua ideia do papel?</h2>
             <p>Envie um e-mail com seu nome, o nome do seu negócio e o que você quer divulgar, melhorar ou organizar. A partir daí, podemos marcar uma conversa para entender melhor o que você precisa e definir os próximos passos.</p>
           </div>
-          <a class="button contact-address" href={`mailto:${contactEmail}`}>
-            Enviar e-mail
-          </a>
+          <div class="contact-actions">
+            <a class="button contact-address" href={`mailto:${contactEmail}`}>Enviar e-mail</a>
+            <button class="copy-email" type="button" data-copy-email={contactEmail}>Copiar endereço</button>
+            <span class="copy-message" role="status" aria-live="polite"></span>
+          </div>
         </div>
       </div>
     </section>
@@ -146,3 +148,20 @@ const contactEmail = 'contato.hericleskoelher@outlook.com';
     </div>
   </footer>
 </BaseLayout>
+
+<script>
+  const copyButton = document.querySelector<HTMLButtonElement>('[data-copy-email]');
+  const copyMessage = document.querySelector<HTMLElement>('.copy-message');
+
+  copyButton?.addEventListener('click', async () => {
+    const email = copyButton.dataset.copyEmail;
+    if (!email || !copyMessage) return;
+
+    try {
+      await navigator.clipboard.writeText(email);
+      copyMessage.textContent = 'E-mail copiado';
+    } catch {
+      copyMessage.textContent = 'Não foi possível copiar o e-mail';
+    }
+  });
+</script>
