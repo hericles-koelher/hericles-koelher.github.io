@@ -13,15 +13,15 @@ const navigation = [
 const services = [
   {
     title: 'Landing pages',
-    description: 'Divulgue uma oferta, campanha ou serviço em uma página que facilita o pedido de orçamento.',
+    description: 'Divulgue um serviço ou uma campanha com uma página focada em receber pedidos de orçamento.',
   },
   {
     title: 'Sites institucionais',
-    description: 'Apresente seu negócio, reúna seus serviços e ajude o cliente a encontrar as informações de que precisa.',
+    description: 'Reúna seus serviços, informações da empresa e canais de contato em um site que você pode divulgar.',
   },
   {
     title: 'Pequenos sistemas',
-    description: 'Organize uma rotina, como acompanhar pedidos. Em uma conversa, entendo como ela funciona e defino o escopo com você.',
+    description: 'Organize tarefas como acompanhar pedidos ou registrar solicitações em um sistema feito para sua rotina.',
   },
 ];
 
@@ -53,8 +53,8 @@ const contactEmail = 'contato.hericleskoelher@outlook.com';
       <a class="brand" href="#topo"><span class="brand-mark" aria-hidden="true">&lt;/&gt;</span> Hericles Koelher</a>
       <nav class="main-nav" aria-label="Navegação principal">
         {navigation.map(({ label, href }) => <a href={href}>{label}</a>)}
+        <a class="button header-contact" href="#contato">Contato</a>
       </nav>
-      <a class="button header-contact" href="#contato">Contato</a>
     </div>
   </header>
 
@@ -77,9 +77,9 @@ const contactEmail = 'contato.hericleskoelher@outlook.com';
 
     <section id="servicos" class="services" aria-labelledby="titulo-servicos">
       <div class="shell services-grid">
-        <div>
+        <div class="services-heading">
           <p class="eyebrow">Serviços</p>
-          <h2 id="titulo-servicos">Soluções digitais para o seu negócio</h2>
+          <h2 id="titulo-servicos">Qual solução faz sentido para você?</h2>
         </div>
         {services.map(({ title, description }) => (
           <article class="service-card">
