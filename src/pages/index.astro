@@ -3,9 +3,13 @@ import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import bancada from '../assets/bancada-previa.webp';
 import retratoMadeira from '../assets/retrato-madeira.png';
+import vilaAmparo from '../assets/demonstracoes/vila-amparo.webp';
+import patioDeDentro from '../assets/demonstracoes/patio-de-dentro.webp';
+import gestaoDeEstoque from '../assets/demonstracoes/gestao-de-estoque.webp';
 
 const navigation = [
   { label: 'Serviços', href: '#servicos' },
+  { label: 'Demonstrações', href: '#demonstracoes' },
   { label: 'Benefícios', href: '#beneficios' },
   { label: 'Sobre', href: '#sobre' },
 ];
@@ -22,6 +26,33 @@ const services = [
   {
     title: 'Pequenos sistemas',
     description: 'Organize tarefas como acompanhar pedidos ou registrar solicitações em um sistema feito para sua rotina.',
+  },
+];
+
+const demonstrations = [
+  {
+    title: 'Vila Amparo',
+    type: 'Landing page',
+    description: 'Página para divulgar os serviços de uma dedetizadora fictícia, com etapas de atendimento e simulação de pedido de orçamento.',
+    preview: vilaAmparo,
+    alt: 'Página inicial da Vila Amparo com chamada para orçamento e ilustração de um dedetizador',
+    url: 'https://hericles-koelher.github.io/vila-amparo/',
+  },
+  {
+    title: 'Pátio de Dentro',
+    type: 'Site institucional',
+    description: 'Site para planejar a visita a um centro cultural fictício, com agenda filtrável, páginas de atividades e informações de acesso.',
+    preview: patioDeDentro,
+    alt: 'Página inicial do Pátio de Dentro, com uma fotografia de uma fachada de tijolos',
+    url: 'https://hericles-koelher.github.io/cultural-center/',
+  },
+  {
+    title: 'Gestão de estoque',
+    type: 'Pequeno sistema',
+    description: 'Sistema para acompanhar o saldo de produtos fictícios, com cadastro, registro de entradas e saídas e histórico de movimentações.',
+    preview: gestaoDeEstoque,
+    alt: 'Painel de estoque com indicadores de saldo e uma lista de produtos para reposição',
+    url: 'https://hericles-koelher.github.io/inventory-demo/',
   },
 ];
 
@@ -53,8 +84,8 @@ const contactEmail = 'contato.hericleskoelher@outlook.com';
       <a class="brand" href="#topo"><span class="brand-mark" aria-hidden="true">&lt;/&gt;</span> Hericles Koelher</a>
       <nav class="main-nav" aria-label="Navegação principal">
         {navigation.map(({ label, href }) => <a href={href}>{label}</a>)}
-        <a class="button header-contact" href="#contato">Contato</a>
       </nav>
+      <a class="button header-contact" href="#contato">Contato</a>
     </div>
   </header>
 
@@ -87,6 +118,38 @@ const contactEmail = 'contato.hericleskoelher@outlook.com';
             <p>{description}</p>
           </article>
         ))}
+      </div>
+    </section>
+
+    <section id="demonstracoes" class="demonstrations" aria-labelledby="titulo-demonstracoes">
+      <div class="shell">
+        <div class="demonstrations-heading">
+          <h2 id="titulo-demonstracoes">Demonstrações</h2>
+          <p>Explore três projetos conceituais e veja como cada solução funciona na prática.</p>
+        </div>
+        <div class="demonstrations-grid">
+          {demonstrations.map(({ title, type, description, preview, alt, url }) => (
+            <article class="demonstration-card">
+              <Image
+                class="demonstration-image"
+                src={preview}
+                alt={alt}
+                widths={[360, 480, 720, 1080]}
+                sizes="(max-width: 47rem) calc(100vw - 2rem), (max-width: 63rem) 30vw, 24rem"
+                format="webp"
+              />
+              <div class="demonstration-copy">
+                <h3>{title}</h3>
+                <p class="demonstration-type">{type}</p>
+                <p class="demonstration-description">{description}</p>
+                <a class="demonstration-link" href={url}>
+                  <span class="demonstration-link-label">Ver demonstração<span class="sr-only"> de {title}</span></span>
+                  <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
 
@@ -146,6 +209,10 @@ const contactEmail = 'contato.hericleskoelher@outlook.com';
       <a class="brand" href="#topo"><span class="brand-mark" aria-hidden="true">&lt;/&gt;</span> Hericles Koelher</a>
       <a href="#topo">Voltar ao início ↑</a>
     </div>
+    <p class="shell photo-credit">
+      A captura de Pátio de Dentro inclui a foto <a href="https://commons.wikimedia.org/wiki/File:Sesc_pompeia.JPG">Sesc Pompeia</a>,
+      de Nevinho, recortada e redimensionada sob <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>.
+    </p>
   </footer>
 </BaseLayout>
 
